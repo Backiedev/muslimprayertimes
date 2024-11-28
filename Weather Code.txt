@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Weather</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #004d73;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1.weather-title {
+            color: #004d73;
+            margin-bottom: 10px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .weather-info img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .temp {
+            font-size: 48px;
+            color: #333;
+        }
+
+        .description {
+            text-transform: capitalize;
+            color: #555;
+        }
+
+        .location {
+            margin-top: 10px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 50px auto;
+                padding: 15px;
+            }
+
+            .weather-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .temp {
+                font-size: 40px;
+            }
+
+            .weather-info img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1.weather-title {
+                font-size: 28px;
+            }
+
+            .temp {
+                font-size: 36px;
+            }
+
+            .container {
+                width: 90%;
+                margin: 30px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="weather-title" id="weather-heading">Local Weather</h1>
+        <div class="weather-info">
+            <div>
+                <p class="description" id="weather-description">Loading...</p>
+                <p class="location" id="city-name">Fetching location...</p>
+            </div>
+            <div>
+                <p class="temp" id="temperature">--°C</p>
+                <img id="weather-icon" src="" alt="Weather Icon">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            getWeather(); // Call the function when the page loads
+        };
+
+        async function getWeather() {
+            const apiKey = '61bc131c0c1d3082fa6190b3f103dd6d';
+
+            if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser.');
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+                    try {
+                        const response = await fetch(url);
+
+                        if (!response.ok) {
+                            throw new Error(`Error: ${response.statusText}`);
+                        }
+
+                        const data = await response.json();
+                        const cityName = data.name;
+
+                        // Update UI with weather data
+                        document.getElementById('city-name').textContent = cityName;
+                        document.getElementById('weather-description').textContent = data.weather[0].description;
+                        document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°C`;
+                        document.getElementById('weather-icon').src = 
+                            `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+                        // Update the heading with city name
+                        document.getElementById('weather-heading').textContent = `Local Weather in ${cityName}`;
+
+                    } catch (error) {
+                        console.error('Error fetching weather data:', error);
+                        document.getElementById('weather-description').textContent = 'Unable to fetch weather data.';
+                    }
+                },
+                (error) => {
+                    console.error('Geolocation error:', error.message);
+
+                    if (error.code === error.PERMISSION_DENIED) {
+                        alert('Please enable location access to see the weather for your area.');
+                    }
+
+                    document.getElementById('weather-description').textContent = 'Unable to access location.';
+                },
+                { timeout: 10000 }
+            );
+        }
+    </script>
+
+</body>
+</html>
