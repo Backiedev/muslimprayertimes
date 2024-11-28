@@ -30,8 +30,13 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/your-username/muslimprayertimes.info.git
+
+![home1](https://github.com/user-attachments/assets/100a562c-0660-42ce-8be4-ecf4d41bc001)
+
+
+
+
+
 
 ![image](https://github.com/user-attachments/assets/d4c2f6a3-9e3e-414c-af6c-23f7b53403a2)
-![home1](https://github.com/user-attachments/assets/100a562c-0660-42ce-8be4-ecf4d41bc001)
+
