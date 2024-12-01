@@ -31,12 +31,29 @@ To set up the project locally, follow these steps:
 1. Clone the repository:
 
 
-![home1](https://github.com/user-attachments/assets/100a562c-0660-42ce-8be4-ecf4d41bc001)
+![Prayer-Times-for-Muslims-in-all-over-the-world](https://github.com/user-attachments/assets/07355441-0227-41d8-b4fa-d35dd2bf0bf6)
 
 
 
+Duaas MuslimprayerTimes
 
 
+![WhatsApp Image 2024-12-01 at 11 01 38 PM (1)](https://github.com/user-attachments/assets/4162c126-d507-49cc-a12b-c19a2bc0a482)
 
-![image](https://github.com/user-attachments/assets/d4c2f6a3-9e3e-414c-af6c-23f7b53403a2)
+
+MuslimPrayerTimes Azan Timing
+
+
+![WhatsApp Image 2024-12-01 at 11 01 38 PM](https://github.com/user-attachments/assets/6e7a14c9-d287-4056-b624-9ce4c4aa46f7)
+
+
+Local Times in MuslimPrayerTimes
+
+![WhatsApp Image 2024-12-01 at 11 01 36 PM](https://github.com/user-attachments/assets/9e41c580-8695-41cc-bd28-28c85b1295ec)
+
+
+Also Got the Monthly Timetable for you
+
+
+![WhatsApp Image 2024-12-01 at 11 01 36 PM (1)](https://github.com/user-attachments/assets/cd9d63f0-3dba-4721-ba74-17aa8b781bf4)
 
